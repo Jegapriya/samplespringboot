@@ -20,7 +20,7 @@ pipeline {
         
             steps{
             
-                sh 'exit 0'
+                sh 'bundle exec rake spec'
             }
             post{
                 success{
