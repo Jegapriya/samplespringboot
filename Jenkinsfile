@@ -12,10 +12,9 @@ pipeline {
             }
         }
         
-        stage ('Test')
-    {
-    steps{
-    try {
+        stage('Test') { 
+            steps {
+                 try {
         sh 'exit 0'
         currentBuild.result = 'SUCCESS'
     } catch (any) {
@@ -24,13 +23,8 @@ pipeline {
     } finally {
         step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: 'jegapriyamunieswaran@gmail.com', sendToIndividuals: true])
     }
-    }
-    }
-        //stage('Test') { 
-            //steps {
-                // 
-            //}
-        //}
+            }
+        }
         stage('Deploy') { 
            steps {
     //sh 'curl -X POST http://localhost:10000/shutdown || true'
