@@ -23,13 +23,13 @@ pipeline {
                 sh 'exit 0'
             }
             post{
-    success{
-            emailext body: 'Success', subject: 'testing extended email', to: 'jegapriyamunieswaran@gmail.com'
-       }
-     failure
-     {
-        emailext body: 'Failed', subject: 'testing extended email', to: 'jegapriyamunieswaran@gmail.com'
-     }
+                success{
+                    emailext body: 'Success', subject: 'testing extended email', to: 'jegapriyamunieswaran@gmail.com'
+                 }
+                failure
+                {
+                        emailext body: 'Failed', subject: 'testing extended email', to: 'jegapriyamunieswaran@gmail.com'
+                }
             }
         }
         stage('Deploy') { 
