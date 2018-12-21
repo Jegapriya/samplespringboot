@@ -20,7 +20,7 @@ pipeline {
         
             steps{
             
-                sh 'bundle exec rake spec'
+                sh 'ls target/*.war'
             }
             post{
                 success{
