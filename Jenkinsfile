@@ -13,18 +13,8 @@ pipeline {
         }
         
         stage('Test') { 
-            steps {
-            try
-            {
-                 sh 'exit 0'
-            }
-            catch(any)
-            {
-                
-            }
-            finally{
-        step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: 'jegapriyamunieswaran@gmail.com', sendToIndividuals: true])
-            }
+           steps{
+            step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: 'jegapriyamunieswaran@gmail.com', sendToIndividuals: true])
             }
         }
         stage('Deploy') { 
