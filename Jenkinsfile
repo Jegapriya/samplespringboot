@@ -19,6 +19,8 @@ pipeline {
         {
         
             steps{
+            
+                sh 'exit 0'
             }
             post{
     success{
