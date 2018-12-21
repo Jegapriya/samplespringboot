@@ -9,7 +9,7 @@ node {
        }
        
         stage('Build') {
-           sh "${mvnHome}/bin/mvn clean instal"
+           sh "${mvnHome}/bin/mvn clean install"
        }
    }
    catch(err)
