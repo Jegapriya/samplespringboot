@@ -17,6 +17,9 @@ pipeline {
 
         stage('Test')
         {
+        
+            steps{
+            }
             post{
     success{
             emailext body: 'Success', subject: 'testing extended email', to: 'jegapriyamunieswaran@gmail.com'
