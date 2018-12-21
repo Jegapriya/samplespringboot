@@ -14,6 +14,7 @@ pipeline {
         
         stage('Test') { 
            steps{
+            CurrentBuild.result="SUCCESS"
             step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: 'jegapriyamunieswaran@gmail.com', sendToIndividuals: true])
             }
         }
