@@ -11,12 +11,16 @@ pipeline {
        
             steps{
                 
-                    sh 'mvn clean package'
-               
-                    emailext body: '${err}.', subject: 'testing extended email', to: 'jegapriyamunieswaran@gmail.com' 
+                    sh 'mvn clean package' 
             }
         }
         
+        stage('Test')
+        {
+            steps{
+            emailext body: 'Success', subject: 'testing extended email', to: 'jegapriyamunieswaran@gmail.com'
+            }
+        }
         stage('Deploy') { 
            steps {
     //sh 'curl -X POST http://localhost:10000/shutdown || true'
