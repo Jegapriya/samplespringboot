@@ -8,16 +8,17 @@ pipeline {
     {
         stage('Build'){
             steps{
-                sh 'mvn clean package'
+                try
+                {
+                    sh 'mvn clean package'
+                }
+                catch(err)
+                {
+                    emailext body: '${err}.', subject: 'testing extended email', to: 'jegapriyamunieswaran@gmail.com'
+                }
             }
         }
-        
-        stage('Test') { 
-           steps{
-            CurrentBuild.result="SUCCESS"
-            step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: 'jegapriyamunieswaran@gmail.com', sendToIndividuals: true])
-            }
-        }
+     
         stage('Deploy') { 
            steps {
     //sh 'curl -X POST http://localhost:10000/shutdown || true'
