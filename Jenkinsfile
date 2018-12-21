@@ -15,7 +15,6 @@ pipeline {
         stage('Test') { 
             steps {
         sh 'exit 0'
-        currentBuild.result = 'SUCCESS'
         step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: 'jegapriyamunieswaran@gmail.com', sendToIndividuals: true])
             }
         }
