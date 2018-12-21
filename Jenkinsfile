@@ -7,22 +7,16 @@ pipeline {
     stages
     {
     
-    try
-    {
-    
-        stage('Build'){
+     stage('Build'){
        
             steps{
                 
                     sh 'mvn clean package'
                
- 
+                    emailext body: '${err}.', subject: 'testing extended email', to: 'jegapriyamunieswaran@gmail.com' 
             }
         }
-        }catch(err)
-     {
-        emailext body: '${err}.', subject: 'testing extended email', to: 'jegapriyamunieswaran@gmail.com'
-     }
+        
         stage('Deploy') { 
            steps {
     //sh 'curl -X POST http://localhost:10000/shutdown || true'
