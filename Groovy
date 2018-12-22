@@ -11,7 +11,7 @@ node {
         stage('Build') {
            sh "${mvnHome}/bin/mvn clean install"
        }
-       emailext body: 'Success', subject: 'testing extended email', to: 'jegapriyamunieswaran@gmail.com'
+       
    }
    catch(err)
    {
