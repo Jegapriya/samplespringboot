@@ -12,11 +12,20 @@ node {
            sh "${mvnHome}/bin/mvn clean install"
        }
        
+        stage('SonarQube analysis') {
+                   sh '''mvn sonar:sonar \
+                  -Dsonar.host.url=http://40.117.251.114 \
+                  -Dsonar.login=f123527d7d1b866ca778f520164510bc9601a562  '''
+    }
    }
    catch(err)
    {
        emailext body: "${err}", subject: 'job failed', to: 'jegapriyamunieswaran@gmail.com'
    }
-} 
-  
+
+}
+
+
  
+ 
+
