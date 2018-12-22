@@ -14,7 +14,7 @@ node {
        
         stage('SonarQube analysis') {
                    sh '''mvn sonar:sonar \
-                  -Dsonar.host.url=http://40.117.251.114 \
+                  -Dsonar.host.url=http://40.117.251.114 
                   -Dsonar.login=f123527d7d1b866ca778f520164510bc9601a562  '''
     }
    }
