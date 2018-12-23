@@ -23,7 +23,6 @@ node {
        emailext body: "${err}", subject: 'job failed', to: 'jegapriyamunieswaran@gmail.com'
    }
 
-
 }
 
 
