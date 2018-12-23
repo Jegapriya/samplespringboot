@@ -1,7 +1,6 @@
 node {
    def mvnHome  
    try{
-       
        stage('Preparation') {
           git 'https://github.com/Jegapriya/samplespringboot.git'
                    
