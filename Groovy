@@ -7,11 +7,7 @@ node {
           mvnHome = tool 'Maven'
        }
    
-        stage('Build') {
-           sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
-       }
-       
-        stage('SonarQube analysis') {
+   	stage('SonarQube analysis') {
                    sh '''mvn sonar:sonar \
                   -Dsonar.host.url=http://13.90.59.213 \
                   -Dsonar.login=cfc8d6f8dfcf4e6598f27038825973a8023c4638'''
@@ -29,6 +25,10 @@ node {
 			}
 		}
 		
+        stage('Build') {
+           sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
+       }
+		
     stage('Artifactory upload') {
 	      def uploadSpec = """{ "files": [ {
 		   "pattern": "/var/lib/jenkins/workspace/NewForDiscussion/target/*.war", "target": "DemoSnapshot" 
@@ -38,7 +38,7 @@ node {
    
    stage('downloading artifact'){ 
 	def downloadSpec="""{ "files":[ { 
-		"pattern":"Artifactory/*.war", "target":"/var/lib/jenkins/workspace/NewForDiscussion/" 
+		"pattern":"target/*.war", "target":"/var/lib/jenkins/workspace/NewForDiscussion/" 
 	   } ] }"""  
 	   server.download(downloadSpec)
    }
