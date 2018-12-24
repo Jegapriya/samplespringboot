@@ -17,6 +17,18 @@ node {
                   -Dsonar.login=cfc8d6f8dfcf4e6598f27038825973a8023c4638'''
     }
     
+    stage("Quality Gate") {
+			timeout(time: 1, unit: 'HOURS') { 
+				def qg = waitForQualityGate() 
+				if (qg.status != 'OK') {
+					currentBuild.status='FAILURE'
+					error "Pipeline aborted due to quality gate failure: ${qg.status}"
+					mail bcc: '', body: 'Build Failed', cc: '', from: '', replyTo: '', subject: 'Build Failed', to: 'anoop.jain10@gmail.com'
+					currentBuild.status='FAILURE'
+				}
+			}
+		}
+		
     stage('Artifactory upload') {
 	      def uploadSpec = """{ "files": [ {
 		   "pattern": "/var/lib/jenkins/workspace/DemoCapability/target/*.war", "target": "Artifactory" 
