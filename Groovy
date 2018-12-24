@@ -6,7 +6,7 @@ node {
                   
           mvnHome = tool 'Maven'
        }
-       
+      
        stage('SonarQube analysis') {
                    sh '''mvn sonar:sonar \
                   -Dsonar.host.url=http://13.90.59.213 \
