@@ -15,7 +15,7 @@ node {
   				-Dsonar.host.url=http://13.90.59.213 \
   				-Dsonar.login=30c1044665e9a9410bb71b1cc73e70880a30349b'''
 			}
-	
+
     }
    
     stage("Quality Gate") {
