@@ -16,6 +16,22 @@ node {
                   -Dsonar.host.url=http://40.76.47.238 \
                   -Dsonar.login=cfc8d6f8dfcf4e6598f27038825973a8023c4638'''
     }
+    
+    stage('Artifactory upload') {
+	      def uploadSpec = """{ "files": [ {
+		   "pattern": "/var/lib/jenkins/workspace/DemoCapability/target/*.war", "target": "Artifactory" 
+	   } ] }""" 
+	   server.upload(uploadSpec)    
+   }
+   
+   stage('downloading artifact'){ 
+	def downloadSpec="""{ "files":[ { 
+		"pattern":"Artifactory/*.war", "target":"/var/lib/jenkins/workspace/NewForDiscussion/" 
+	   } ] }"""  
+	   server.download(downloadSpec)
+   }
+
+
    }
    catch(err)
    {
