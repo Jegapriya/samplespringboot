@@ -4,7 +4,7 @@ node {
    try{
        stage('Preparation') {
           git 'https://github.com/Jegapriya/samplespringboot.git'
-                
+               
           mvnHome = tool 'Maven'
        }
 	
