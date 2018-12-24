@@ -1,5 +1,6 @@
 node {
    def mvnHome  
+   def server=Artifactory.server'Artifactory'
    try{
        stage('Preparation') {
           git 'https://github.com/Jegapriya/samplespringboot.git'
