@@ -29,6 +29,7 @@ node {
 				}
 			}
 		}
+		
     stage('Artifactory upload') {
 	      def uploadSpec = """{ "files": [ {
 		   "pattern": "/var/lib/jenkins/workspace/NewForDiscussion/target/*.war", "target": "DemoSnapshot" 
