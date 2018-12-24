@@ -13,6 +13,11 @@ node {
        }
 		
 	stage('SonarQube analysis') {
+	
+		withSonarQubeEnv('Sonarqube') {
+				sh 'mvn clean package sonar:sonar'
+			}
+			
                    sh '''mvn sonar:sonar \
                   -Dsonar.host.url=http://13.90.59.213 \
                   -Dsonar.login=cfc8d6f8dfcf4e6598f27038825973a8023c4638'''
