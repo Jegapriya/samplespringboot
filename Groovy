@@ -16,10 +16,6 @@ node {
 			
     }
     
-        stage('Build') {
-           sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
-       }
-    
     stage("Quality Gate") {
 			timeout(time: 1, unit: 'HOURS') { 
 				def qg = waitForQualityGate() 
@@ -31,6 +27,12 @@ node {
 				}
 			}
 		}
+		
+        stage('Build') {
+           sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
+       }
+    
+    
 		
     stage('Artifactory upload') {
 	      def uploadSpec = """{ "files": [ {
