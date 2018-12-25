@@ -52,7 +52,7 @@ node {
    {
     
     	stage("New Jira"){
-    	 withEnv(['JIRA_SITE=https://jegapriya.atlassian.net']) {
+    	 withEnv(['JIRA_SITE=Jira']) {
       def testIssue = [fields: [ project: [Key: 'NW'],
                                  summary: 'New JIRA Created from Jenkins.',
                                  description: 'New JIRA Created from Jenkins.',
