@@ -38,14 +38,14 @@ node {
 		
     stage('Artifactory upload') {
 	      def uploadSpec = """{ "files": [ {
-		   "pattern": "/var/lib/jenkins/workspace/NewForDiscussion/target/*.war", "target": "DemoSnapshot" 
+		   "pattern": "/var/lib/jenkins/workspace/NewForDiscussion/target/*.war", "target": "SnapshotNew" 
 	   } ] }""" 
 	   server.upload(uploadSpec)    
    }
    
    stage('downloading artifact'){ 
 	def downloadSpec="""{ "files":[ { 
-		"pattern":"target/*.war", "target":"/var/lib/jenkins/workspace/NewForDiscussion/" 
+		"pattern":"target/*.war", "target":"/var/lib/jenkins/workspace/PipelineDiscussion/" 
 	   } ] }"""  
 	   server.download(downloadSpec)
    }
