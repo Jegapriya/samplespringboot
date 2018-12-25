@@ -27,7 +27,7 @@ node {
 				}
 			}
 		}
-		
+	
         stage('Build') {
            sh "'${mvnHome}/bin/mvn' -Dmaven.ignore.test clean package"
        }   
