@@ -53,10 +53,10 @@ node {
     
     	stage("New Jira"){
     	 withEnv(['JIRA_SITE=Jira']) {
-      def testIssue = [fields: [ project: [Key: 'NW'],
+      def testIssue = [fields: [ project: [id: 10001],
                                  summary: 'New JIRA Created from Jenkins.',
                                  description: 'New JIRA Created from Jenkins.',
-                                 issuetype: [id: 'Bug']]]
+                                 issuetype: [Name: 'Bug']]]
 
       response = jiraNewIssue issue: testIssue
 
