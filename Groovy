@@ -52,8 +52,8 @@ node {
    {
    
    	stage('JIRA') {
-    		withEnv(['JIRA_SITE=https://jegapriya.atlassian.net']) {
-      		def testIssue = [fields: [ project: [id: 'NW'],
+    		withEnv(['JIRA_SITE=https://jegapriya.atlassian.net/secure/RapidBoard.jspa?rapidView=2&projectKey=NW']) {
+      		def testIssue = [fields: [ project: [id: '2'],
                                  summary: 'New JIRA Created from Jenkins.',
                                  description: 'New JIRA Created from Jenkins.',
                                  issuetype: [id: '3']]]
