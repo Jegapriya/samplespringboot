@@ -16,7 +16,7 @@ node {
   					-Dsonar.login=31954f225bd61830fc95c60fb6ecdb37c97e73c6'''
 			}
     }
-   
+ 
     stage("Quality Gate") {
 			timeout(time: 1, unit: 'HOURS') { 
 				def qg = waitForQualityGate() 
