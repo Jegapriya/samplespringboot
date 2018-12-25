@@ -62,10 +62,14 @@ node {
 
       		echo response.successful.toString()
       		echo response.data.toString()
-		emailext body: "${err}", subject: 'job failed', to: 'jegapriyamunieswaran@gmail.com'
+		
     		}
+	
   	}
        
+       stage('email') {
+            emailext body: "${err}", subject: 'job failed', to: 'jegapriyamunieswaran@gmail.com'
+       }
    }
 }
 
