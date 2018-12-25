@@ -50,6 +50,20 @@ node {
    }
    catch(err)
    {
+   
+   	stage('JIRA') {
+    		withEnv(['JIRA_SITE=https://jegapriya.atlassian.net']) {
+      		def testIssue = [fields: [ project: [id: 'NW'],
+                                 summary: 'New JIRA Created from Jenkins.',
+                                 description: 'New JIRA Created from Jenkins.',
+                                 issuetype: [id: '3']]]
+
+      		response = jiraNewIssue issue: testIssue
+
+      		echo response.successful.toString()
+      		echo response.data.toString()
+    		}
+  	}
        emailext body: "${err}", subject: 'job failed', to: 'jegapriyamunieswaran@gmail.com'
    }
 }
