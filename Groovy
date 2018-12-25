@@ -9,7 +9,6 @@ node {
        }
       
 	stage('SonarQube analysis') {
-	
 		withSonarQubeEnv('Sonarqube') {
 				sh '''mvn sonar:sonar \
   					-Dsonar.host.url=http://13.90.59.213 \
@@ -30,10 +29,8 @@ node {
 		}
 		
         stage('Build') {
-           sh "'${mvnHome}/bin/mvn' clean package"
-       }
-    
-    
+           sh "'${mvnHome}/bin/mvn' -Dmaven.ignore.test clean package"
+       }   
 		
     stage('Artifactory upload') {
 	      def uploadSpec = """{ "files": [ {
