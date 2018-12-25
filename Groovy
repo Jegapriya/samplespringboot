@@ -52,7 +52,7 @@ node {
    {
        
     	 withEnv(['JIRA_SITE=Jira']) {
-      def testIssue = [fields: [ project: [id: '10000'],
+      def testIssue = [fields: [ project: [id: 'NW'],
                                  summary: 'New JIRA Created from Jenkins.',
                                  description: 'New JIRA Created from Jenkins.',
                                  issuetype: [id: '3']]]
