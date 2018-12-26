@@ -67,8 +67,8 @@ node {
 	 
 	 stage('comment'){
         withEnv(['JIRA_SITE=Jira']) {
-			jiraComment body: 'Build sucess', issueKey: 'TES-4'
-			jiraAssignIssue idOrKey: 'TES-4', userName: 'admin'
+			jiraComment body: 'Build sucess', issueKey: 'NW-11'
+			jiraAssignIssue idOrKey: 'NW-11', userName: 'admin'
 		}
     }
     
@@ -80,7 +80,7 @@ node {
             id: '41'			  
           ]
         ]
-        jiraTransitionIssue idOrKey: 'TES-4', input: transitionInput
+        jiraTransitionIssue idOrKey: 'NW-11', input: transitionInput
       }
     }
             emailext body: "${err}", subject: 'job failed', to: 'jegapriyamunieswaran@gmail.com'
