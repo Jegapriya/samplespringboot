@@ -64,6 +64,25 @@ node {
       echo response.data.toString()
     }
    	 }
+	 
+	 stage('comment'){
+        withEnv(['JIRA_SITE=anoop-jira']) {
+			jiraComment body: 'Build sucess', issueKey: 'TES-4'
+			jiraAssignIssue idOrKey: 'TES-4', userName: 'admin'
+		}
+    }
+    
+    stage('JIRA-transition') {
+      withEnv(['JIRA_SITE=anoop-jira']) {
+        def transitionInput =
+        [
+          transition: [
+            id: '41'			  
+          ]
+        ]
+        jiraTransitionIssue idOrKey: 'TES-4', input: transitionInput
+      }
+    }
             emailext body: "${err}", subject: 'job failed', to: 'jegapriyamunieswaran@gmail.com'
    }
 }
