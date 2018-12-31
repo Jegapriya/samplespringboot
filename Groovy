@@ -58,9 +58,8 @@ node {
                                  description: 'New JIRA Created from Jenkins.',
                                  issuetype: [name: 'Bug']]]
 
+     jiraAssignIssue site: 'Jira', idOrKey: 'NW-14', userName: 'vikas.gokhale.v'
       response = jiraNewIssue issue: testIssue
-
-      jiraAssignIssue site: 'Jira', idOrKey: 'NW-14', userName: 'vikas.gokhale.v'
       echo response.successful.toString()
       echo response.data.toString()
     }
