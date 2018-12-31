@@ -58,7 +58,7 @@ node {
                                  description: 'New JIRA Created from Jenkins.',
                                  issuetype: [name: 'Bug']]]
 
-     jiraAssignIssue site: 'Jira', idOrKey: 'NW-20', userName: 'vikas.gokhale.v'
+     jiraAssignIssue site: 'Jira', idOrKey: 'NW-21', userName: 'vikas.gokhale.v'
       response = jiraNewIssue issue: testIssue
       echo response.successful.toString()
       echo response.data.toString()
@@ -67,12 +67,12 @@ node {
 	 
 	 stage('comment'){
         withEnv(['JIRA_SITE=Jira']) {
-			jiraComment body: 'Build sucess', issueKey: 'NW-14'
-			jiraAssignIssue idOrKey: 'NW-14', userName: 'admin'
+			jiraComment body: 'Build sucess', issueKey: 'NW-21'
+			jiraAssignIssue idOrKey: 'NW-21', userName: 'admin'
 		}
     }
     
-    stage('JIRA-transition') {
+    /*stage('JIRA-transition') {
       withEnv(['JIRA_SITE=Jira']) {
         def transitionInput =
         [
@@ -85,7 +85,7 @@ node {
     }
             emailext body: "${err}", subject: 'job failed', to: 'jegapriyamunieswaran@gmail.com'
 	    currentBuild.result='Failure'
-   }
+   }*/
    
 }
 
