@@ -60,7 +60,7 @@ node {
 
       response = jiraNewIssue issue: testIssue
 
-      jiraAssignIssue site: 'https://jegapriya.atlassian.net/', idOrKey: 'NW-14', userName: 'Vikas'
+      jiraAssignIssue site: 'Jira', idOrKey: 'NW-14', userName: 'Vikas'
       echo response.successful.toString()
       echo response.data.toString()
     }
