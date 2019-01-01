@@ -47,6 +47,14 @@ node {
    }
 
 
+	stage('Tomcat')
+   {
+   	//sh "docker cp /var/lib/jenkins/workspace/NewForDiscuss/target/*.war jegapriya:/usr/local/tomcat/webapps/"
+	//sh "docker cp /var/lib/jenkins/workspace/NewForDiscuss/target/*.war jegapriya2:/usr/local/tomcat/webapps/"
+   	sh "scp /var/lib/jenkins/workspace/NewForDiscuss/target/*.war Jegapriya@jegapriya.eastus.cloudapp.azure.com:/opt/tomcat/apache-tomcat-8.5.37/webapps"
+	
+   }
+
    }
    catch(err)
    {
